@@ -1,4 +1,4 @@
-title Sethckiller by NIM v1.0.1
+title Sethckiller by NIM v1.1.0
 ::https://github.com/DoingDog/sethckiller
 ::Edit config.killer.ini first
 ::never be places in paths with spaces
