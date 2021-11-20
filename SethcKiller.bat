@@ -1,4 +1,7 @@
-title Sethckiller by NIM
+title Sethckiller by NIM v1.0.1
+::https://github.com/DoingDog/sethckiller
+::Edit config.killer.ini first
+
 cd /d %~dp0
 if not exist config.killer.ini goto :firstUse
 :InitComp
