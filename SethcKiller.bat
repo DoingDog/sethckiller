@@ -1,6 +1,7 @@
 title Sethckiller by NIM v1.0.1
 ::https://github.com/DoingDog/sethckiller
 ::Edit config.killer.ini first
+::never be places in paths with spaces
 
 cd /d %~dp0
 if not exist config.killer.ini goto :firstUse
@@ -8,12 +9,18 @@ if not exist config.killer.ini goto :firstUse
 for /f "eol=# delims=" %%i in (config.killer.ini) do (%%i)
 @echo off&mode con cols=15 lines=2&color ca
 cd /d "%startedpath%"&&goto :Installed
-cls&color e9&echo INVALID CONFIG&ping -n 5 0.0.0.0 >nul&exit
+cls&color e9&echo INVALID CONFIG
+choice /t 4 /d y /n >nul
+exit
 :Installed
 set isLantryStarted=1
 :LoopFindSethc
+echo wscript.sleep 500>%~dp0\trash.vbs
+:smallLoopFindSethc
+echo NOT DETECTED
+start /wait %~dp0\trash.vbs
 taskkill /f /im %flagc%&&goto :IfLanStarted
-cls&goto :LoopFindSethc
+cls&goto :smallLoopFindSethc
 :ReStartLantry
 set isLantryStarted=1
 if defined startedexe1 start %startedexe1%
@@ -33,6 +40,7 @@ if defined killed5 for /l %%i in (1,1,9) do taskkill /f /t /im "%killed5%"
 if defined killed6 for /l %%i in (1,1,9) do taskkill /f /t /im "%killed6%"
 cls&color ac&goto :LoopFindSethc
 :IfLanStarted
+del /f /q %~dp0\trash.vbs
 if %isLantryStarted%==1 goto :StartKiller
 goto :ReStartLantry
 :firstUse
