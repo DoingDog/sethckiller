@@ -1,7 +1,10 @@
-title Sethckiller by NIM v1.1.0
+title Sethckiller by NIM v1.2.0
 ::https://github.com/DoingDog/sethckiller
 ::Edit config.killer.ini first
-::never be places in paths with spaces
+::place config.killer.ini here or in Desktop or in D:
+::never be placed in paths with spaces
+
+::Good luck!
 
 cd /d %~dp0
 if not exist config.killer.ini goto :firstUse
@@ -44,6 +47,8 @@ del /f /q %~dp0\trash.vbs
 if %isLantryStarted%==1 goto :StartKiller
 goto :ReStartLantry
 :firstUse
+if exist %appdata%\..\..\Desktop\config.killer.ini copy /y %appdata%\..\..\Desktop\config.killer.ini .\config.killer.ini&goto :InitComp
+if exist D:\config.killer.ini copy /y D:\config.killer.ini .\config.killer.ini&goto :InitComp
 echo # config of Sethckiller by NIM default>config.killer.ini
 echo # ---------------------------------------------------------->>config.killer.ini
 echo # CHANGE exes to find below>>config.killer.ini
